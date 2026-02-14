@@ -1,0 +1,17 @@
+{
+  "name": "aniversario_maluzita",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "parcel src/index.html src/styles/main.scss src/scripts/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4",
+    "sass": "^1.97.3"
+  }
+}

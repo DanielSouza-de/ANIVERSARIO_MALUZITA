@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #f3e7ff, #e3d4f3, #d6c2e1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    text-align: center;
+    font-size: 40px;
+    color: #700172;
+    letter-spacing: 1px;
+}
+
+.tempo {
+    display: block;
+    font-size: 80px;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: pulse 1s infinite;
+    color: #700172;
+    letter-spacing: 2px;
+}
+
+.card {
+    padding: 60px 80px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.sub {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .card {
+        padding: 50px 40px;
+        max-width: 90%;
+    }
+
+    p {
+        font-size: 32px;
+    }
+
+    .tempo {
+        font-size: 60px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .card {
+        padding: 35px 20px;
+        max-width: 95%;
+        border-radius: 16px;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .tempo {
+        font-size: 34px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+}
