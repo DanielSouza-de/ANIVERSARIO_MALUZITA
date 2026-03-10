@@ -2,7 +2,7 @@ const contador = document.getElementById("contador");
 
 if (contador) {
 
-    const dataDoEvento = new Date("Mar 10, 2026 00:00:00").getTime();
+    const dataDoEvento = new Date("Mar 11, 2026 00:00:00").getTime();
 
     setInterval(() => {
 
