@@ -1,21 +1,22 @@
-const dataDoEvento = new Date("Mar 11, 2026 00:00:00");
-const timeStampDoEvento = dataDoEvento.getTime();
-const contaAsHoras = setInterval(function() {
-    const agora = new Date();
-    const timeStampAtual = agora.getTime();
-    const distanciaAteOEvento = timeStampDoEvento - timeStampAtual;
-    const diaEmMs = 86400000;
-    const horaEmMs = 3600000;
-    const minutoEmMs = 60000;
-    const diasAteOEvento = Math.floor(distanciaAteOEvento / diaEmMs);
-    const horasAteOEvento = Math.floor(distanciaAteOEvento % diaEmMs / horaEmMs);
-    const minutosAteOEvento = Math.floor(distanciaAteOEvento % horaEmMs / minutoEmMs);
-    const segundosAteOEvento = Math.floor(distanciaAteOEvento % minutoEmMs / 1000);
-    document.getElementById('contador').innerHTML = `${diasAteOEvento}d ${horasAteOEvento}h ${minutosAteOEvento}m ${segundosAteOEvento}s`;
-    if (distanciaAteOEvento < 0) {
-        clearInterval(contaAsHoras);
-        document.getElementById('contador').innerHTML = '. . .';
-    }
-}, 1000);
+const contador = document.getElementById("contador");
+if (contador) {
+    const dataDoEvento = new Date("Mar 11, 2026 00:00:00").getTime();
+    setInterval(()=>{
+        const agora = new Date().getTime();
+        const distancia = dataDoEvento - agora;
+        const dias = Math.floor(distancia / 86400000);
+        const horas = Math.floor(distancia % 86400000 / 3600000);
+        const minutos = Math.floor(distancia % 3600000 / 60000);
+        const segundos = Math.floor(distancia % 60000 / 1000);
+        contador.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        if (distancia <= 0) {
+            document.body.style.transition = "opacity 1s";
+            document.body.style.opacity = "0";
+            setTimeout(()=>{
+                window.location.href = "surpresa.html";
+            }, 1000);
+        }
+    }, 1000);
+}
 
 //# sourceMappingURL=aniversario_maluzita.f75de5e1.js.map

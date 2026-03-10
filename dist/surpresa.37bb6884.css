@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #f5f3ff;
+  letter-spacing: .3px;
+  background: radial-gradient(circle at 0 0, #2a2440, #141124 70%);
+  font-family: Poppins, sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.intro-letter {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+}
+
+.letter-card {
+  backdrop-filter: blur(18px);
+  text-align: center;
+  background: #ffffff0a;
+  border: 1px solid #ffffff0d;
+  border-radius: 30px;
+  max-width: 750px;
+  padding: 70px 50px;
+  box-shadow: 0 30px 60px #0006;
+}
+
+.letter-card h1 {
+  color: #e9d5ff;
+  margin-bottom: 25px;
+  font-family: Playfair Display, serif;
+  font-size: 48px;
+}
+
+.letter-text {
+  color: #ddd6fe;
+  margin-bottom: 50px;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.open-btn {
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #c77dff, #9d4edd);
+  border: none;
+  border-radius: 40px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all .3s;
+  box-shadow: 0 10px 25px #9d4edd66;
+}
+
+.open-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px #9d4edd99;
+}
+
+.historia, .galeria, .assinatura {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 30px;
+}
+
+.titulo-secao {
+  text-align: center;
+  color: #d8b4fe;
+  margin-bottom: 90px;
+  font-family: Playfair Display, serif;
+  font-size: 40px;
+}
+
+.momento {
+  opacity: 0;
+  align-items: center;
+  min-height: 80vh;
+  margin-bottom: 120px;
+  transition: all 1.2s;
+  display: flex;
+  transform: translateY(80px);
+}
+
+.momento.ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.momento-conteudo {
+  align-items: center;
+  gap: 80px;
+  display: flex;
+}
+
+.momento-conteudo.invertido {
+  flex-direction: row-reverse;
+}
+
+.momento-texto {
+  flex: 1;
+}
+
+.momento-texto h2 {
+  color: #f9a8d4;
+  margin-bottom: 30px;
+  font-family: Playfair Display, serif;
+  font-size: 42px;
+}
+
+.momento-texto p {
+  color: #ede9fe;
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 300;
+}
+
+.contador-namoro {
+  margin: 12px 0 24px;
+}
+
+.contador-namoro p {
+  color: #fff;
+  background: linear-gradient(45deg, #ff7aa2, #ff4d6d);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform .25s, box-shadow .25s;
+  display: inline-block;
+  box-shadow: 0 8px 18px #ff4d6d59;
+}
+
+.contador-namoro p:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px #ff4d6d99;
+}
+
+.momento-texto .titulo-contador-namoro {
+  color: #dcd6f7;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nota-secreta {
+  color: #333;
+  cursor: pointer;
+  background: #fff8dc;
+  border-radius: 8px;
+  margin-top: 40px;
+  padding: 12px 20px;
+  display: inline-block;
+  box-shadow: 0 4px 10px #00000026;
+}
+
+.mensagem-secreta {
+  color: #dcd6f7;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.momento-foto {
+  flex: 1;
+}
+
+.momento-foto img {
+  border-radius: 28px;
+  width: 100%;
+  transition: all .6s;
+  box-shadow: 0 30px 70px #00000073;
+}
+
+.momento-foto img:hover {
+  transform: scale(1.05);
+}
+
+.grid-fotos {
+  column-count: 4;
+  column-gap: 25px;
+}
+
+.grid-fotos img {
+  break-inside: avoid;
+  border-radius: 22px;
+  width: 100%;
+  margin-bottom: 25px;
+  transition: all .4s;
+  display: block;
+  box-shadow: 0 15px 35px #0000004d;
+}
+
+.grid-fotos img:hover {
+  transform: scale(1.04);
+}
+
+.assinatura {
+  text-align: center;
+  padding-bottom: 150px;
+}
+
+.assinatura h2 {
+  color: #c77dff;
+  margin-top: 20px;
+  font-family: Playfair Display, serif;
+  font-size: 36px;
+}
+
+@media (width <= 1000px) {
+  .momento-conteudo {
+    text-align: center;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .momento-texto h2 {
+    font-size: 34px;
+  }
+
+  .momento-texto p {
+    font-size: 18px;
+  }
+
+  .grid-fotos {
+    column-count: 2;
+  }
+}
+
+@media (width <= 600px) {
+  .letter-card {
+    padding: 50px 30px;
+  }
+
+  .letter-card h1 {
+    font-size: 36px;
+  }
+
+  .letter-text {
+    font-size: 18px;
+  }
+
+  .grid-fotos {
+    column-count: 1;
+  }
+}
+/*# sourceMappingURL=surpresa.37bb6884.css.map */

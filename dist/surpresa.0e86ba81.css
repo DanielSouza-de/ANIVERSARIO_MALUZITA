@@ -1,0 +1,69 @@
+body {
+  color: #fff;
+  background: #1e1b2e;
+  font-family: sans-serif;
+}
+
+.historia, .galeria, .momentos-especiais {
+  width: 100%;
+  max-width: 900px;
+  margin: 4rem 0;
+}
+
+.historia h2, .galeria h2, .momentos-especiais h2 {
+  color: #d8b4fe;
+  margin-bottom: 2rem;
+}
+
+.timeline {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.momento {
+  backdrop-filter: blur(6px);
+  background: #ffffff0d;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.momento .data {
+  color: #f9a8d4;
+  font-weight: bold;
+}
+
+.fotos {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  display: grid;
+}
+
+.fotos img {
+  object-fit: cover;
+  border-radius: 12px;
+  width: 100%;
+  transition: transform .4s;
+}
+
+.fotos img:hover {
+  transform: scale(1.05);
+}
+
+.cards {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  display: grid;
+}
+
+.card {
+  background: #ffffff0d;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+/*# sourceMappingURL=surpresa.0e86ba81.css.map */

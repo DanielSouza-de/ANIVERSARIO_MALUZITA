@@ -1,0 +1,39 @@
+/* Tablet */
+@media (max-width: 1024px) {
+    .card {
+        padding: 50px 40px;
+        max-width: 90%;
+    }
+
+    p {
+        font-size: 32px;
+    }
+
+    .tempo {
+        font-size: 60px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .card {
+        padding: 35px 20px;
+        max-width: 95%;
+        border-radius: 16px;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .tempo {
+        font-size: 34px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+}

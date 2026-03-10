@@ -6,8 +6,8 @@
   "author": "",
   "type": "commonjs",
   "scripts": {
-    "dev": "parcel src/index.html src/styles/main.scss src/scripts/main.js",
-    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html src/surpresa.html src/styles/main.scss src/scripts/main.js",
+    "build": "parcel build src/index.html src/surpresa.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
