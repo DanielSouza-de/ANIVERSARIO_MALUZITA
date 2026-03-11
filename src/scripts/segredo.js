@@ -1,256 +1,218 @@
-let nivel = 1
+let nivel = 1;
 
-const alvo = document.getElementById("alvo")
-const area = document.getElementById("areaJogo")
+const alvo = document.getElementById("alvo");
+const area = document.getElementById("areaJogo");
 
-function esconder(){
+function esconder() {
+  const x = Math.random() * (area.clientWidth - alvo.clientWidth);
+  const y = Math.random() * (area.clientHeight - alvo.clientHeight);
 
-const x = Math.random() * (area.clientWidth - alvo.clientWidth)
-const y = Math.random() * (area.clientHeight - alvo.clientHeight)
-
-alvo.style.left = x + "px"
-alvo.style.top = y + "px"
-
+  alvo.style.left = x + "px";
+  alvo.style.top = y + "px";
 }
 
 alvo.onclick = () => {
+  nivel++;
 
-nivel++
+  if (nivel == 2) {
+    document.getElementById("nivel").innerText = "Nível 2 - Médio";
+    alvo.style.width = "50px";
+  } else if (nivel == 3) {
+    document.getElementById("nivel").innerText = "Nível 3 - Difícil";
+    alvo.style.width = "30px";
+  } else if (nivel == 4) {
+    document.getElementById("nivel").innerText = "Nível 4 - Hardcore";
+    alvo.style.width = "20px";
+  } else {
+    alert(
+      "🎂 Feliz aniversário! Você encontrou os bolos! Agora vamos para o quiz",
+    );
 
-if(nivel == 2){
-document.getElementById("nivel").innerText = "Nível 2 - Médio"
-alvo.style.width = "50px"
-}
+    document.getElementById("minigame").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
 
-else if(nivel == 3){
-document.getElementById("nivel").innerText = "Nível 3 - Difícil"
-alvo.style.width = "30px"
-}
+    mostrarPergunta();
 
-else if(nivel == 4){
-document.getElementById("nivel").innerText = "Nível 4 - Hardcore"
-alvo.style.width = "20px"
-}
+    return;
+  }
 
-else{
+  esconder();
+};
 
-alert("🎂 Feliz aniversário! Você encontrou os bolos! Agora vamos para o quiz")
-
-document.getElementById("minigame").style.display = "none"
-document.getElementById("quiz").style.display = "block"
-
-mostrarPergunta()
-
-return
-
-}
-
-esconder()
-
-}
-
-esconder()
-
+esconder();
 
 /* ======================
-    QUIZ
-====================== */
+        QUIZ
+    ====================== */
 
-let perguntaAtual = 0
-let acertos = 0
+let perguntaAtual = 0;
+let acertos = 0;
 
 const perguntas = [
-{
-pergunta: `Qual foi o lugar do nosso primeiro "encontro"`,
-opcoes: ["Cinema", "Praça", "Minha Casa"],
-correta: 2
-},
+  {
+    pergunta: `Qual foi o lugar do nosso primeiro "encontro"`,
+    opcoes: ["Cinema", "Praça", "Minha Casa"],
+    correta: 2,
+  },
 
-{
-pergunta: "Qual comida eu mais gosto?",
-opcoes: ["Peixe", "Hambúrguer", "Lasanha"],
-correta: 0
-},
+  {
+    pergunta: "Qual comida eu mais gosto?",
+    opcoes: ["Peixe", "Hambúrguer", "Lasanha"],
+    correta: 0,
+  },
 
-{
-pergunta: "Quem disse 'eu te amo' primeiro?",
-opcoes: ["Você", "Eu", "Os dois"],
-correta: 1
-},
+  {
+    pergunta: "Quem disse 'eu te amo' primeiro?",
+    opcoes: ["Você", "Eu", "Os dois"],
+    correta: 1,
+  },
 
-{
-pergunta: "Qual é o dia especial de hoje?",
-opcoes: ["Natal", "Ano Novo", "O dia da princesa mais linda"],
-correta: 2
-},
-{
-pergunta: "Quem programou esse site?",
-opcoes: ["Um maluco", "Um Hacker", "Um Nerd", "Eu"],
-correta: 3
-},
-{
-pergunta: "Por que ele fez esse site?",
-opcoes: ["Tédio", "Estudar", "Porque queria te fazer feliz 🎂"],
-correta: 2
-},
-{
-pergunta: "Você acha que ele gosta de você?",
-opcoes: ["talvez", "um pouco", "sim", "óbvio que sim"],
-correta: 3
-}
-]
+  {
+    pergunta: "Qual é o dia especial de hoje?",
+    opcoes: ["Natal", "Ano Novo", "O dia da princesa mais linda"],
+    correta: 2,
+  },
+  {
+    pergunta: "Quem programou esse site?",
+    opcoes: ["Um maluco", "Um Hacker", "Um Nerd", "Seu namorado"],
+    correta: 3,
+  },
+  {
+    pergunta: "Por que ele fez esse site?",
+    opcoes: ["Tédio", "Estudar", "Porque queria te fazer feliz 🎂"],
+    correta: 2,
+  },
+  {
+    pergunta: "Você acha que ele gosta de você?",
+    opcoes: ["talvez", "um pouco", "sim", "óbvio que sim"],
+    correta: 3,
+  },
+];
 
-function mostrarPergunta(){
+function mostrarPergunta() {
+  const perguntaEl = document.getElementById("pergunta");
+  const respostasEl = document.getElementById("respostas");
 
-const perguntaEl = document.getElementById("pergunta")
-const respostasEl = document.getElementById("respostas")
+  perguntaEl.innerText = perguntas[perguntaAtual].pergunta;
 
-perguntaEl.innerText = perguntas[perguntaAtual].pergunta
+  respostasEl.innerHTML = "";
 
-respostasEl.innerHTML = ""
+  perguntas[perguntaAtual].opcoes.forEach((opcao, index) => {
+    const botao = document.createElement("button");
+    botao.innerText = opcao;
 
-perguntas[perguntaAtual].opcoes.forEach((opcao, index) => {
+    botao.onclick = () => verificarResposta(index);
 
-const botao = document.createElement("button")
-botao.innerText = opcao
-
-botao.onclick = () => verificarResposta(index)
-
-respostasEl.appendChild(botao)
-
-})
-
+    respostasEl.appendChild(botao);
+  });
 }
 
-function verificarResposta(resposta){
+function verificarResposta(resposta) {
+  const resultado = document.getElementById("resultado");
 
-const resultado = document.getElementById("resultado")
+  if (resposta === perguntas[perguntaAtual].correta) {
+    resultado.innerText = "Acertou ❤️";
+    acertos++;
+  } else {
+    resultado.innerText = "Errou 😜";
+  }
 
-if(resposta === perguntas[perguntaAtual].correta){
-resultado.innerText = "Acertou ❤️"
-acertos++
-}else{
-resultado.innerText = "Errou 😜"
+  perguntaAtual++;
+
+  if (perguntaAtual < perguntas.length) {
+    setTimeout(() => {
+      resultado.innerText = "";
+      mostrarPergunta();
+    }, 1000);
+  } else {
+    document.getElementById("pergunta").style.display = "none";
+    document.getElementById("respostas").style.display = "none";
+
+    if (acertos === perguntas.length) {
+      resultado.innerText = "Você acertou tudo ❤️";
+
+      document.getElementById("abrirCarta").style.display = "inline-block";
+
+      chuvaCoracoes();
+    } else {
+      resultado.innerText = "Hmm... tente novamente 😜";
+
+      const botaoRecomecar = document.createElement("button");
+      botaoRecomecar.innerText = "Tentar novamente";
+
+      botaoRecomecar.onclick = reiniciarQuiz;
+
+      document.getElementById("quiz").appendChild(botaoRecomecar);
+    }
+  }
 }
 
-perguntaAtual++
+function reiniciarQuiz() {
+  perguntaAtual = 0;
+  acertos = 0;
 
-if(perguntaAtual < perguntas.length){
+  document.getElementById("pergunta").style.display = "block";
+  document.getElementById("respostas").style.display = "block";
 
-setTimeout(() => {
-resultado.innerText = ""
-mostrarPergunta()
-}, 1000)
+  document.getElementById("resultado").innerText = "";
 
-}else{
-
-document.getElementById("pergunta").style.display = "none"
-document.getElementById("respostas").style.display = "none"
-
-if(acertos === perguntas.length){
-
-resultado.innerText = "Você acertou tudo ❤️"
-
-document.getElementById("abrirCarta").style.display = "inline-block"
-
-chuvaCoracoes()
-
-}else{
-
-resultado.innerText = "Hmm... tente novamente 😜"
-
-const botaoRecomecar = document.createElement("button")
-botaoRecomecar.innerText = "Tentar novamente"
-
-botaoRecomecar.onclick = reiniciarQuiz
-
-document.getElementById("quiz").appendChild(botaoRecomecar)
-
+  mostrarPergunta();
 }
-
-}
-
-}
-
-function reiniciarQuiz(){
-
-perguntaAtual = 0
-acertos = 0
-
-document.getElementById("pergunta").style.display = "block"
-document.getElementById("respostas").style.display = "block"
-
-document.getElementById("resultado").innerText = ""
-
-mostrarPergunta()
-
-}
-
 
 /* ======================
-    CHUVA DE CORAÇÕES
-====================== */
+        CHUVA DE CORAÇÕES
+    ====================== */
 
-function chuvaCoracoes(){
+function chuvaCoracoes() {
+  for (let i = 0; i < 40; i++) {
+    const coracao = document.createElement("div");
 
-for(let i = 0; i < 40; i++){
+    coracao.innerText = "💖";
 
-const coracao = document.createElement("div")
+    coracao.style.position = "fixed";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.top = "-50px";
+    coracao.style.fontSize = 20 + Math.random() * 20 + "px";
 
-coracao.innerText = "💖"
+    coracao.style.animation = `cair ${2 + Math.random() * 3}s linear`;
 
-coracao.style.position = "fixed"
-coracao.style.left = Math.random() * 100 + "vw"
-coracao.style.top = "-50px"
-coracao.style.fontSize = (20 + Math.random() * 20) + "px"
+    document.body.appendChild(coracao);
 
-coracao.style.animation = `cair ${2 + Math.random() * 3}s linear`
-
-document.body.appendChild(coracao)
-
-setTimeout(() => {
-coracao.remove()
-},5000)
-
+    setTimeout(() => {
+      coracao.remove();
+    }, 5000);
+  }
 }
-
-}
-
 
 /* ======================
-    CARTA
-====================== */
+        CARTA
+    ====================== */
 
 document.getElementById("abrirCarta").onclick = () => {
+  const carta = document.getElementById("carta");
 
-const carta = document.getElementById("carta")
+  carta.style.display = "block";
+  carta.innerHTML = "";
 
-carta.style.display = "block"
-carta.innerHTML = ""
+  posicao = 0;
 
-posicao = 0
+  escreverCarta();
+};
 
-escreverCarta()
+const textoCarta =
+  "Se você chegou até aqui... é porque realmente me conhece. Amor, muito obrigado por ter aceitado meu pedido de namoro, desde esse dia eu sou a pessoa mais feliz do mundo... Ter você é um sonho realizado, um sonho quase impossível, eu nunca pensei que teria uma namorada e muito menos uma tão perfeitinha e lindinha que dá vontade de apertar. Eu amo você amor, eu quero que seja mais e mais feliz comigo, quero ser seu refúgio quando o mundo pressionar, quero ser seu cantinho de paz porque você merece, sua pimentinha. ❤️";
 
-}
+let posicao = 0;
+const velocidade = 50;
 
-const textoCarta = "Se você chegou até aqui... é porque realmente me conhece. Eu só queria dizer que gosto muito de você ❤️"
+function escreverCarta() {
+  const carta = document.getElementById("carta");
 
-let posicao = 0
-const velocidade = 50
+  if (posicao < textoCarta.length) {
+    carta.innerHTML += textoCarta.charAt(posicao);
 
-function escreverCarta(){
+    posicao++;
 
-const carta = document.getElementById("carta")
-
-if(posicao < textoCarta.length){
-
-carta.innerHTML += textoCarta.charAt(posicao)
-
-posicao++
-
-setTimeout(escreverCarta, velocidade)
-
-}
-
+    setTimeout(escreverCarta, velocidade);
+  }
 }

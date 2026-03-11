@@ -29,8 +29,8 @@ alvo.onclick = ()=>{
 };
 esconder();
 /* ======================
-    QUIZ
-====================== */ let perguntaAtual = 0;
+        QUIZ
+    ====================== */ let perguntaAtual = 0;
 let acertos = 0;
 const perguntas = [
     {
@@ -75,7 +75,7 @@ const perguntas = [
             "Um maluco",
             "Um Hacker",
             "Um Nerd",
-            "Eu"
+            "Seu namorado"
         ],
         correta: 3
     },
@@ -147,8 +147,8 @@ function reiniciarQuiz() {
     mostrarPergunta();
 }
 /* ======================
-    CHUVA DE CORAÇÕES
-====================== */ function chuvaCoracoes() {
+        CHUVA DE CORAÇÕES
+    ====================== */ function chuvaCoracoes() {
     for(let i = 0; i < 40; i++){
         const coracao = document.createElement("div");
         coracao.innerText = "\uD83D\uDC96";
@@ -164,15 +164,15 @@ function reiniciarQuiz() {
     }
 }
 /* ======================
-    CARTA
-====================== */ document.getElementById("abrirCarta").onclick = ()=>{
+        CARTA
+    ====================== */ document.getElementById("abrirCarta").onclick = ()=>{
     const carta = document.getElementById("carta");
     carta.style.display = "block";
     carta.innerHTML = "";
     posicao = 0;
     escreverCarta();
 };
-const textoCarta = "Se voc\xea chegou at\xe9 aqui... \xe9 porque realmente me conhece. Eu s\xf3 queria dizer que gosto muito de voc\xea \u2764\uFE0F";
+const textoCarta = "Se voc\xea chegou at\xe9 aqui... \xe9 porque realmente me conhece. Amor, muito obrigado por ter aceitado meu pedido de namoro, desde esse dia eu sou a pessoa mais feliz do mundo... Ter voc\xea \xe9 um sonho realizado, um sonho quase imposs\xedvel, eu nunca pensei que teria uma namorada e muito menos uma t\xe3o perfeitinha e lindinha que d\xe1 vontade de apertar. Eu amo voc\xea amor, eu quero que seja mais e mais feliz comigo, quero ser seu ref\xfagio quando o mundo pressionar, quero ser seu cantinho de paz porque voc\xea merece, sua pimentinha. \u2764\uFE0F";
 let posicao = 0;
 const velocidade = 50;
 function escreverCarta() {
